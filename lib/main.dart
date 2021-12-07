@@ -47,16 +47,23 @@ class _HomePageState extends State<HomePage> {
     final stub = StepClient(channel);
 
     try {
+      StepRequest request = StepRequest();
+      request.name = "step";
+
+      Option option = Option();
+      option.pattern = "test";
+      request.option = option;
+
       final response = await stub.sayHello(
-        StepRequest()..name = 'flutter world',
+        request,
         // options: CallOptions(compression: const GzipCodec()),
       );
 
       setState(() {
-        _message = response.message;
+        _message = response.summary.fileCount.toString();
       });
 
-      print('Greeter client received: ${response.message}');
+      print('Greeter client received: ${response}');
     } catch (e) {
       print('Caught error: $e');
     }

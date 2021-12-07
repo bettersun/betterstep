@@ -1,0 +1,82 @@
+// Copyright 2015 gRPC authors.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+option go_package = "github.com/bettersun/betterstep/proto";
+option java_multiple_files = true;
+option java_package = "com.sunjiashu.betterstep";
+option java_outer_classname = "StepProto";
+
+package betterstep;
+
+// The greeting service definition.
+service Step {
+  // Sends a greeting
+  rpc SayHello (StepRequest) returns (StepReply) {}
+}
+
+// 搜索选项
+message Option  {
+  repeated string RootPath = 1;           // 目标根目录
+  bool SearchSubPath = 2;                 // 搜索子目录
+  bool MatchCase = 3;                     // 区分大小写
+  repeated  string FileNamePart = 4;      // 目标文件名关键字
+  repeated  string FileType = 5;          // 目标文件类型
+  string Pattern = 6;                     // 搜索模式
+  repeated  string IgnorePath = 7;        // 忽略目录（目录名完全相同，设置此项有助于提高搜索效率，常用忽略目录: .git, .svn）
+  repeated  string  IgnoreFileNamePart = 8; // 忽略文件名关键字
+  repeated  string IgnoreType = 9;        // 忽略文件类型
+  string IgnorePattern = 10;              // 忽略模式
+  bool ShowDetail = 11;                   // 是否显示文件详细信息标志
+}
+
+// 代码行数信息
+message StepInfo {
+  bool CommentRuleDefined = 1;  // 存在注释标志定义 true:存在 false:不存在
+  string File = 2;              // 文件名（全路径）
+  string FileName = 3;          // 文件名
+  int32 TotalStep = 4;            // 总行数
+  int32 EmptyLineStep = 5;        // 空行数
+  int32 CommentStep = 6;          // 注释行数
+  int32 SourceStep = 7;           // 代码行数
+  int32 ValidStep = 8;            // 有效行数(注释+代码)
+  string ExInfo = 9;            // 扩展信息
+  bool Counted = 10;            // 已统计标志 true:已统计 false:未统计
+}
+
+// 代码行数信息汇总
+message StepSummary {
+  repeated StepInfo Info = 1;                // 代码行数统计结果
+  repeated string FlatFile = 2;         // 无注标志定义文件
+  repeated string UnCountedFile = 3;    // 未统计文件一览
+  int32 FileCount = 4;                    // 总行数
+  int32 TotalStep = 5;                    // 总行数
+  int32 EmptyLineStep = 6;                // 空行数
+  int32 CommentStep = 7;                  // 注释行数
+  int32 SourceStep = 8;                   // 代码行数
+  int32 ValidStep = 9;                    // 有效行数(注释+代码)
+}
+
+// The request message containing the user's name.
+message StepRequest {
+  string name = 1;
+  Option option = 2;
+}
+
+// The response message containing the greetings
+message StepReply {
+  string message = 1;
+  StepSummary summary = 2;
+}

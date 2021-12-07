@@ -19,7 +19,7 @@ run the flutter app.
 ## gppc command
 
 ```
-protoc -I proto/ proto/step.proto --dart_out=grpc:lib/rpc
+protoc -I server/proto/ server/proto/step.proto --dart_out=grpc:lib/rpc
 ```
 
 ```
