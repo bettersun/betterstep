@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:grpc/grpc.dart';
+import 'package:get/get.dart';
 
-import 'rpc/step.pbgrpc.dart';
+import 'home.dart';
 
 void main() {
   runApp(const StepApp());
@@ -12,86 +12,11 @@ class StepApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+    return GetMaterialApp(
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  String _message = 'hello';
-
-  void _callGRPC() async {
-    final channel = ClientChannel(
-      'localhost',
-      port: 50051,
-      options: ChannelOptions(
-        credentials: const ChannelCredentials.insecure(),
-        codecRegistry:
-            CodecRegistry(codecs: const [GzipCodec(), IdentityCodec()]),
-      ),
-    );
-    final stub = StepClient(channel);
-
-    try {
-      StepRequest request = StepRequest();
-      request.name = "step";
-
-      Option option = Option();
-      option.pattern = "test";
-      request.option = option;
-
-      final response = await stub.sayHello(
-        request,
-        // options: CallOptions(compression: const GzipCodec()),
-      );
-
-      setState(() {
-        _message = response.summary.fileCount.toString();
-      });
-
-      print('Greeter client received: ${response}');
-    } catch (e) {
-      print('Caught error: $e');
-    }
-    await channel.shutdown();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              _message,
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _callGRPC,
-        tooltip: 'call gRPC',
-        child: const Icon(Icons.add),
-      ),
+      home: HomePage(),
     );
   }
 }

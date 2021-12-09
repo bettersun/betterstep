@@ -42,29 +42,31 @@ const StepInfo$json = const {
     const {'1': 'ValidStep', '3': 8, '4': 1, '5': 5, '10': 'ValidStep'},
     const {'1': 'ExInfo', '3': 9, '4': 1, '5': 9, '10': 'ExInfo'},
     const {'1': 'Counted', '3': 10, '4': 1, '5': 8, '10': 'Counted'},
+    const {'1': 'CommentDefined', '3': 11, '4': 1, '5': 8, '10': 'CommentDefined'},
   ],
 };
 
 /// Descriptor for `StepInfo`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List stepInfoDescriptor = $convert.base64Decode('CghTdGVwSW5mbxIuChJDb21tZW50UnVsZURlZmluZWQYASABKAhSEkNvbW1lbnRSdWxlRGVmaW5lZBISCgRGaWxlGAIgASgJUgRGaWxlEhoKCEZpbGVOYW1lGAMgASgJUghGaWxlTmFtZRIcCglUb3RhbFN0ZXAYBCABKAVSCVRvdGFsU3RlcBIkCg1FbXB0eUxpbmVTdGVwGAUgASgFUg1FbXB0eUxpbmVTdGVwEiAKC0NvbW1lbnRTdGVwGAYgASgFUgtDb21tZW50U3RlcBIeCgpTb3VyY2VTdGVwGAcgASgFUgpTb3VyY2VTdGVwEhwKCVZhbGlkU3RlcBgIIAEoBVIJVmFsaWRTdGVwEhYKBkV4SW5mbxgJIAEoCVIGRXhJbmZvEhgKB0NvdW50ZWQYCiABKAhSB0NvdW50ZWQ=');
+final $typed_data.Uint8List stepInfoDescriptor = $convert.base64Decode('CghTdGVwSW5mbxIuChJDb21tZW50UnVsZURlZmluZWQYASABKAhSEkNvbW1lbnRSdWxlRGVmaW5lZBISCgRGaWxlGAIgASgJUgRGaWxlEhoKCEZpbGVOYW1lGAMgASgJUghGaWxlTmFtZRIcCglUb3RhbFN0ZXAYBCABKAVSCVRvdGFsU3RlcBIkCg1FbXB0eUxpbmVTdGVwGAUgASgFUg1FbXB0eUxpbmVTdGVwEiAKC0NvbW1lbnRTdGVwGAYgASgFUgtDb21tZW50U3RlcBIeCgpTb3VyY2VTdGVwGAcgASgFUgpTb3VyY2VTdGVwEhwKCVZhbGlkU3RlcBgIIAEoBVIJVmFsaWRTdGVwEhYKBkV4SW5mbxgJIAEoCVIGRXhJbmZvEhgKB0NvdW50ZWQYCiABKAhSB0NvdW50ZWQSJgoOQ29tbWVudERlZmluZWQYCyABKAhSDkNvbW1lbnREZWZpbmVk');
 @$core.Deprecated('Use stepSummaryDescriptor instead')
 const StepSummary$json = const {
   '1': 'StepSummary',
   '2': const [
     const {'1': 'Info', '3': 1, '4': 3, '5': 11, '6': '.betterstep.StepInfo', '10': 'Info'},
-    const {'1': 'FlatFile', '3': 2, '4': 3, '5': 9, '10': 'FlatFile'},
-    const {'1': 'UnCountedFile', '3': 3, '4': 3, '5': 9, '10': 'UnCountedFile'},
-    const {'1': 'FileCount', '3': 4, '4': 1, '5': 5, '10': 'FileCount'},
-    const {'1': 'TotalStep', '3': 5, '4': 1, '5': 5, '10': 'TotalStep'},
-    const {'1': 'EmptyLineStep', '3': 6, '4': 1, '5': 5, '10': 'EmptyLineStep'},
-    const {'1': 'CommentStep', '3': 7, '4': 1, '5': 5, '10': 'CommentStep'},
-    const {'1': 'SourceStep', '3': 8, '4': 1, '5': 5, '10': 'SourceStep'},
-    const {'1': 'ValidStep', '3': 9, '4': 1, '5': 5, '10': 'ValidStep'},
+    const {'1': 'CountedFileCount', '3': 2, '4': 1, '5': 5, '10': 'CountedFileCount'},
+    const {'1': 'FlatFile', '3': 3, '4': 3, '5': 9, '10': 'FlatFile'},
+    const {'1': 'UnCountedFile', '3': 4, '4': 3, '5': 9, '10': 'UnCountedFile'},
+    const {'1': 'FileCount', '3': 5, '4': 1, '5': 5, '10': 'FileCount'},
+    const {'1': 'TotalStep', '3': 6, '4': 1, '5': 5, '10': 'TotalStep'},
+    const {'1': 'EmptyLineStep', '3': 7, '4': 1, '5': 5, '10': 'EmptyLineStep'},
+    const {'1': 'CommentStep', '3': 8, '4': 1, '5': 5, '10': 'CommentStep'},
+    const {'1': 'SourceStep', '3': 9, '4': 1, '5': 5, '10': 'SourceStep'},
+    const {'1': 'ValidStep', '3': 10, '4': 1, '5': 5, '10': 'ValidStep'},
   ],
 };
 
 /// Descriptor for `StepSummary`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List stepSummaryDescriptor = $convert.base64Decode('CgtTdGVwU3VtbWFyeRIoCgRJbmZvGAEgAygLMhQuYmV0dGVyc3RlcC5TdGVwSW5mb1IESW5mbxIaCghGbGF0RmlsZRgCIAMoCVIIRmxhdEZpbGUSJAoNVW5Db3VudGVkRmlsZRgDIAMoCVINVW5Db3VudGVkRmlsZRIcCglGaWxlQ291bnQYBCABKAVSCUZpbGVDb3VudBIcCglUb3RhbFN0ZXAYBSABKAVSCVRvdGFsU3RlcBIkCg1FbXB0eUxpbmVTdGVwGAYgASgFUg1FbXB0eUxpbmVTdGVwEiAKC0NvbW1lbnRTdGVwGAcgASgFUgtDb21tZW50U3RlcBIeCgpTb3VyY2VTdGVwGAggASgFUgpTb3VyY2VTdGVwEhwKCVZhbGlkU3RlcBgJIAEoBVIJVmFsaWRTdGVw');
+final $typed_data.Uint8List stepSummaryDescriptor = $convert.base64Decode('CgtTdGVwU3VtbWFyeRIoCgRJbmZvGAEgAygLMhQuYmV0dGVyc3RlcC5TdGVwSW5mb1IESW5mbxIqChBDb3VudGVkRmlsZUNvdW50GAIgASgFUhBDb3VudGVkRmlsZUNvdW50EhoKCEZsYXRGaWxlGAMgAygJUghGbGF0RmlsZRIkCg1VbkNvdW50ZWRGaWxlGAQgAygJUg1VbkNvdW50ZWRGaWxlEhwKCUZpbGVDb3VudBgFIAEoBVIJRmlsZUNvdW50EhwKCVRvdGFsU3RlcBgGIAEoBVIJVG90YWxTdGVwEiQKDUVtcHR5TGluZVN0ZXAYByABKAVSDUVtcHR5TGluZVN0ZXASIAoLQ29tbWVudFN0ZXAYCCABKAVSC0NvbW1lbnRTdGVwEh4KClNvdXJjZVN0ZXAYCSABKAVSClNvdXJjZVN0ZXASHAoJVmFsaWRTdGVwGAogASgFUglWYWxpZFN0ZXA=');
 @$core.Deprecated('Use stepRequestDescriptor instead')
 const StepRequest$json = const {
   '1': 'StepRequest',

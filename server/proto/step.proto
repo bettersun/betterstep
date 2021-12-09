@@ -32,18 +32,19 @@ message Option  {
   repeated string RootPath = 1;           // 目标根目录
   bool SearchSubPath = 2;                 // 搜索子目录
   bool MatchCase = 3;                     // 区分大小写
-  repeated  string FileNamePart = 4;      // 目标文件名关键字
-  repeated  string FileType = 5;          // 目标文件类型
+  repeated string FileNamePart = 4;      // 目标文件名关键字
+  repeated string FileType = 5;          // 目标文件类型
   string Pattern = 6;                     // 搜索模式
-  repeated  string IgnorePath = 7;        // 忽略目录（目录名完全相同，设置此项有助于提高搜索效率，常用忽略目录: .git, .svn）
-  repeated  string  IgnoreFileNamePart = 8; // 忽略文件名关键字
-  repeated  string IgnoreType = 9;        // 忽略文件类型
+  repeated string IgnorePath = 7;        // 忽略目录（目录名完全相同，设置此项有助于提高搜索效率，常用忽略目录: .git, .svn）
+  repeated string  IgnoreFileNamePart = 8; // 忽略文件名关键字
+  repeated string IgnoreType = 9;        // 忽略文件类型
   string IgnorePattern = 10;              // 忽略模式
   bool ShowDetail = 11;                   // 是否显示文件详细信息标志
 }
 
 // 代码行数信息
 message StepInfo {
+
   bool CommentRuleDefined = 1;  // 存在注释标志定义 true:存在 false:不存在
   string File = 2;              // 文件名（全路径）
   string FileName = 3;          // 文件名
@@ -54,19 +55,21 @@ message StepInfo {
   int32 ValidStep = 8;            // 有效行数(注释+代码)
   string ExInfo = 9;            // 扩展信息
   bool Counted = 10;            // 已统计标志 true:已统计 false:未统计
+  bool CommentDefined = 11;     // 存在注释配置 true:存在 false:不存在
 }
 
 // 代码行数信息汇总
 message StepSummary {
   repeated StepInfo Info = 1;                // 代码行数统计结果
-  repeated string FlatFile = 2;         // 无注标志定义文件
-  repeated string UnCountedFile = 3;    // 未统计文件一览
-  int32 FileCount = 4;                    // 总行数
-  int32 TotalStep = 5;                    // 总行数
-  int32 EmptyLineStep = 6;                // 空行数
-  int32 CommentStep = 7;                  // 注释行数
-  int32 SourceStep = 8;                   // 代码行数
-  int32 ValidStep = 9;                    // 有效行数(注释+代码)
+  int32 CountedFileCount =2;        // 统计文件总数
+  repeated string FlatFile = 3;         // 无注标志定义文件
+  repeated string UnCountedFile = 4;    // 未统计文件一览
+  int32 FileCount = 5;                    // 总行数
+  int32 TotalStep = 6;                    // 总行数
+  int32 EmptyLineStep = 7;                // 空行数
+  int32 CommentStep = 8;                  // 注释行数
+  int32 SourceStep = 9;                   // 代码行数
+  int32 ValidStep = 10;                    // 有效行数(注释+代码)
 }
 
 // The request message containing the user's name.

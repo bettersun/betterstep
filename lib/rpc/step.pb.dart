@@ -172,6 +172,7 @@ class StepInfo extends $pb.GeneratedMessage {
     ..a<$core.int>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ValidStep', $pb.PbFieldType.O3, protoName: 'ValidStep')
     ..aOS(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ExInfo', protoName: 'ExInfo')
     ..aOB(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Counted', protoName: 'Counted')
+    ..aOB(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'CommentDefined', protoName: 'CommentDefined')
     ..hasRequiredFields = false
   ;
 
@@ -187,6 +188,7 @@ class StepInfo extends $pb.GeneratedMessage {
     $core.int? validStep,
     $core.String? exInfo,
     $core.bool? counted,
+    $core.bool? commentDefined,
   }) {
     final _result = create();
     if (commentRuleDefined != null) {
@@ -218,6 +220,9 @@ class StepInfo extends $pb.GeneratedMessage {
     }
     if (counted != null) {
       _result.counted = counted;
+    }
+    if (commentDefined != null) {
+      _result.commentDefined = commentDefined;
     }
     return _result;
   }
@@ -331,25 +336,36 @@ class StepInfo extends $pb.GeneratedMessage {
   $core.bool hasCounted() => $_has(9);
   @$pb.TagNumber(10)
   void clearCounted() => clearField(10);
+
+  @$pb.TagNumber(11)
+  $core.bool get commentDefined => $_getBF(10);
+  @$pb.TagNumber(11)
+  set commentDefined($core.bool v) { $_setBool(10, v); }
+  @$pb.TagNumber(11)
+  $core.bool hasCommentDefined() => $_has(10);
+  @$pb.TagNumber(11)
+  void clearCommentDefined() => clearField(11);
 }
 
 class StepSummary extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'StepSummary', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'betterstep'), createEmptyInstance: create)
     ..pc<StepInfo>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'Info', $pb.PbFieldType.PM, protoName: 'Info', subBuilder: StepInfo.create)
-    ..pPS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'FlatFile', protoName: 'FlatFile')
-    ..pPS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'UnCountedFile', protoName: 'UnCountedFile')
-    ..a<$core.int>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'FileCount', $pb.PbFieldType.O3, protoName: 'FileCount')
-    ..a<$core.int>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'TotalStep', $pb.PbFieldType.O3, protoName: 'TotalStep')
-    ..a<$core.int>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'EmptyLineStep', $pb.PbFieldType.O3, protoName: 'EmptyLineStep')
-    ..a<$core.int>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'CommentStep', $pb.PbFieldType.O3, protoName: 'CommentStep')
-    ..a<$core.int>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'SourceStep', $pb.PbFieldType.O3, protoName: 'SourceStep')
-    ..a<$core.int>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ValidStep', $pb.PbFieldType.O3, protoName: 'ValidStep')
+    ..a<$core.int>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'CountedFileCount', $pb.PbFieldType.O3, protoName: 'CountedFileCount')
+    ..pPS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'FlatFile', protoName: 'FlatFile')
+    ..pPS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'UnCountedFile', protoName: 'UnCountedFile')
+    ..a<$core.int>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'FileCount', $pb.PbFieldType.O3, protoName: 'FileCount')
+    ..a<$core.int>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'TotalStep', $pb.PbFieldType.O3, protoName: 'TotalStep')
+    ..a<$core.int>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'EmptyLineStep', $pb.PbFieldType.O3, protoName: 'EmptyLineStep')
+    ..a<$core.int>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'CommentStep', $pb.PbFieldType.O3, protoName: 'CommentStep')
+    ..a<$core.int>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'SourceStep', $pb.PbFieldType.O3, protoName: 'SourceStep')
+    ..a<$core.int>(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ValidStep', $pb.PbFieldType.O3, protoName: 'ValidStep')
     ..hasRequiredFields = false
   ;
 
   StepSummary._() : super();
   factory StepSummary({
     $core.Iterable<StepInfo>? info,
+    $core.int? countedFileCount,
     $core.Iterable<$core.String>? flatFile,
     $core.Iterable<$core.String>? unCountedFile,
     $core.int? fileCount,
@@ -362,6 +378,9 @@ class StepSummary extends $pb.GeneratedMessage {
     final _result = create();
     if (info != null) {
       _result.info.addAll(info);
+    }
+    if (countedFileCount != null) {
+      _result.countedFileCount = countedFileCount;
     }
     if (flatFile != null) {
       _result.flatFile.addAll(flatFile);
@@ -414,64 +433,73 @@ class StepSummary extends $pb.GeneratedMessage {
   $core.List<StepInfo> get info => $_getList(0);
 
   @$pb.TagNumber(2)
-  $core.List<$core.String> get flatFile => $_getList(1);
+  $core.int get countedFileCount => $_getIZ(1);
+  @$pb.TagNumber(2)
+  set countedFileCount($core.int v) { $_setSignedInt32(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasCountedFileCount() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearCountedFileCount() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.List<$core.String> get unCountedFile => $_getList(2);
+  $core.List<$core.String> get flatFile => $_getList(2);
 
   @$pb.TagNumber(4)
-  $core.int get fileCount => $_getIZ(3);
-  @$pb.TagNumber(4)
-  set fileCount($core.int v) { $_setSignedInt32(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasFileCount() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearFileCount() => clearField(4);
+  $core.List<$core.String> get unCountedFile => $_getList(3);
 
   @$pb.TagNumber(5)
-  $core.int get totalStep => $_getIZ(4);
+  $core.int get fileCount => $_getIZ(4);
   @$pb.TagNumber(5)
-  set totalStep($core.int v) { $_setSignedInt32(4, v); }
+  set fileCount($core.int v) { $_setSignedInt32(4, v); }
   @$pb.TagNumber(5)
-  $core.bool hasTotalStep() => $_has(4);
+  $core.bool hasFileCount() => $_has(4);
   @$pb.TagNumber(5)
-  void clearTotalStep() => clearField(5);
+  void clearFileCount() => clearField(5);
 
   @$pb.TagNumber(6)
-  $core.int get emptyLineStep => $_getIZ(5);
+  $core.int get totalStep => $_getIZ(5);
   @$pb.TagNumber(6)
-  set emptyLineStep($core.int v) { $_setSignedInt32(5, v); }
+  set totalStep($core.int v) { $_setSignedInt32(5, v); }
   @$pb.TagNumber(6)
-  $core.bool hasEmptyLineStep() => $_has(5);
+  $core.bool hasTotalStep() => $_has(5);
   @$pb.TagNumber(6)
-  void clearEmptyLineStep() => clearField(6);
+  void clearTotalStep() => clearField(6);
 
   @$pb.TagNumber(7)
-  $core.int get commentStep => $_getIZ(6);
+  $core.int get emptyLineStep => $_getIZ(6);
   @$pb.TagNumber(7)
-  set commentStep($core.int v) { $_setSignedInt32(6, v); }
+  set emptyLineStep($core.int v) { $_setSignedInt32(6, v); }
   @$pb.TagNumber(7)
-  $core.bool hasCommentStep() => $_has(6);
+  $core.bool hasEmptyLineStep() => $_has(6);
   @$pb.TagNumber(7)
-  void clearCommentStep() => clearField(7);
+  void clearEmptyLineStep() => clearField(7);
 
   @$pb.TagNumber(8)
-  $core.int get sourceStep => $_getIZ(7);
+  $core.int get commentStep => $_getIZ(7);
   @$pb.TagNumber(8)
-  set sourceStep($core.int v) { $_setSignedInt32(7, v); }
+  set commentStep($core.int v) { $_setSignedInt32(7, v); }
   @$pb.TagNumber(8)
-  $core.bool hasSourceStep() => $_has(7);
+  $core.bool hasCommentStep() => $_has(7);
   @$pb.TagNumber(8)
-  void clearSourceStep() => clearField(8);
+  void clearCommentStep() => clearField(8);
 
   @$pb.TagNumber(9)
-  $core.int get validStep => $_getIZ(8);
+  $core.int get sourceStep => $_getIZ(8);
   @$pb.TagNumber(9)
-  set validStep($core.int v) { $_setSignedInt32(8, v); }
+  set sourceStep($core.int v) { $_setSignedInt32(8, v); }
   @$pb.TagNumber(9)
-  $core.bool hasValidStep() => $_has(8);
+  $core.bool hasSourceStep() => $_has(8);
   @$pb.TagNumber(9)
-  void clearValidStep() => clearField(9);
+  void clearSourceStep() => clearField(9);
+
+  @$pb.TagNumber(10)
+  $core.int get validStep => $_getIZ(9);
+  @$pb.TagNumber(10)
+  set validStep($core.int v) { $_setSignedInt32(9, v); }
+  @$pb.TagNumber(10)
+  $core.bool hasValidStep() => $_has(9);
+  @$pb.TagNumber(10)
+  void clearValidStep() => clearField(10);
 }
 
 class StepRequest extends $pb.GeneratedMessage {

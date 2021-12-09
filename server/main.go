@@ -25,6 +25,7 @@ import (
 	"net"
 
 	pb "github.com/bettersun/betterstep/proto"
+	"github.com/bettersun/betterstep/step"
 	"google.golang.org/grpc"
 )
 
@@ -39,10 +40,8 @@ type server struct {
 
 // SayHello
 func (s *server) SayHello(ctx context.Context, in *pb.StepRequest) (*pb.StepReply, error) {
-	log.Printf("Received: %v\n", in)
-	var summary pb.StepSummary
-	summary.FileCount = 20
-	return &pb.StepReply{Message: in.GetName(), Summary: &summary}, nil
+	summary := step.TargetStep(in.Option)
+	return &pb.StepReply{Message: in.GetName(), Summary: summary}, nil
 }
 
 func main() {
