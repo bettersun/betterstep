@@ -76,6 +76,7 @@ func Summary(stepInfo []pb.StepInfo) *pb.StepSummary {
 		stepSummary.Info = append(stepSummary.Info, &stepInfo[i])
 	}
 
+	stepSummary.FileCount = int32(len(stepInfo))
 	return &stepSummary
 }
 
@@ -111,7 +112,7 @@ func Count(file string, mCommentRegExp *map[string]CommentRegExp, infoAll *[]pb.
 		defaultRegEx(&cmtRegExp)
 		// 无注释标志定义
 		info.CommentDefined = false
-		info.ExInfo = "无注释定义, 不统计注释行数。"
+		info.ExInfo = "无注释定义"
 	}
 
 	// 文件全路径

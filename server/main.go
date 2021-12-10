@@ -38,8 +38,8 @@ type server struct {
 	pb.UnimplementedStepServer
 }
 
-// SayHello
-func (s *server) SayHello(ctx context.Context, in *pb.StepRequest) (*pb.StepReply, error) {
+// CountStep
+func (s *server) CountStep(ctx context.Context, in *pb.StepRequest) (*pb.StepReply, error) {
 	summary := step.TargetStep(in.Option)
 	return &pb.StepReply{Message: in.GetName(), Summary: summary}, nil
 }

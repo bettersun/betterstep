@@ -21,10 +21,9 @@ option java_outer_classname = "StepProto";
 
 package betterstep;
 
-// The greeting service definition.
+// 代码统计服务
 service Step {
-  // Sends a greeting
-  rpc SayHello (StepRequest) returns (StepReply) {}
+  rpc  CountStep (StepRequest) returns (StepReply) {}
 }
 
 // 搜索选项

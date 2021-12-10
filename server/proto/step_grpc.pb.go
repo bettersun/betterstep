@@ -18,8 +18,7 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type StepClient interface {
-	// Sends a greeting
-	SayHello(ctx context.Context, in *StepRequest, opts ...grpc.CallOption) (*StepReply, error)
+	CountStep(ctx context.Context, in *StepRequest, opts ...grpc.CallOption) (*StepReply, error)
 }
 
 type stepClient struct {
@@ -30,9 +29,9 @@ func NewStepClient(cc grpc.ClientConnInterface) StepClient {
 	return &stepClient{cc}
 }
 
-func (c *stepClient) SayHello(ctx context.Context, in *StepRequest, opts ...grpc.CallOption) (*StepReply, error) {
+func (c *stepClient) CountStep(ctx context.Context, in *StepRequest, opts ...grpc.CallOption) (*StepReply, error) {
 	out := new(StepReply)
-	err := c.cc.Invoke(ctx, "/betterstep.Step/SayHello", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/betterstep.Step/CountStep", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -43,8 +42,7 @@ func (c *stepClient) SayHello(ctx context.Context, in *StepRequest, opts ...grpc
 // All implementations must embed UnimplementedStepServer
 // for forward compatibility
 type StepServer interface {
-	// Sends a greeting
-	SayHello(context.Context, *StepRequest) (*StepReply, error)
+	CountStep(context.Context, *StepRequest) (*StepReply, error)
 	mustEmbedUnimplementedStepServer()
 }
 
@@ -52,8 +50,8 @@ type StepServer interface {
 type UnimplementedStepServer struct {
 }
 
-func (UnimplementedStepServer) SayHello(context.Context, *StepRequest) (*StepReply, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SayHello not implemented")
+func (UnimplementedStepServer) CountStep(context.Context, *StepRequest) (*StepReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CountStep not implemented")
 }
 func (UnimplementedStepServer) mustEmbedUnimplementedStepServer() {}
 
@@ -68,20 +66,20 @@ func RegisterStepServer(s grpc.ServiceRegistrar, srv StepServer) {
 	s.RegisterService(&Step_ServiceDesc, srv)
 }
 
-func _Step_SayHello_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Step_CountStep_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(StepRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(StepServer).SayHello(ctx, in)
+		return srv.(StepServer).CountStep(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/betterstep.Step/SayHello",
+		FullMethod: "/betterstep.Step/CountStep",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StepServer).SayHello(ctx, req.(*StepRequest))
+		return srv.(StepServer).CountStep(ctx, req.(*StepRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -94,8 +92,8 @@ var Step_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*StepServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "SayHello",
-			Handler:    _Step_SayHello_Handler,
+			MethodName: "CountStep",
+			Handler:    _Step_CountStep_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

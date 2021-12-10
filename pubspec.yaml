@@ -39,8 +39,8 @@ dependencies:
   grpc: ^3.0.2
   protobuf: ^2.0.0
 
-  get:
-  file_picker:
+  get: ^4.5.1
+  file_picker: ^4.2.7
 dev_dependencies:
   flutter_test:
     sdk: flutter

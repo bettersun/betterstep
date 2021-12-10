@@ -14,8 +14,8 @@ import 'step.pb.dart' as $0;
 export 'step.pb.dart';
 
 class StepClient extends $grpc.Client {
-  static final _$sayHello = $grpc.ClientMethod<$0.StepRequest, $0.StepReply>(
-      '/betterstep.Step/SayHello',
+  static final _$countStep = $grpc.ClientMethod<$0.StepRequest, $0.StepReply>(
+      '/betterstep.Step/CountStep',
       ($0.StepRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.StepReply.fromBuffer(value));
 
@@ -24,9 +24,9 @@ class StepClient extends $grpc.Client {
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
 
-  $grpc.ResponseFuture<$0.StepReply> sayHello($0.StepRequest request,
+  $grpc.ResponseFuture<$0.StepReply> countStep($0.StepRequest request,
       {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$sayHello, request, options: options);
+    return $createUnaryCall(_$countStep, request, options: options);
   }
 }
 
@@ -35,19 +35,19 @@ abstract class StepServiceBase extends $grpc.Service {
 
   StepServiceBase() {
     $addMethod($grpc.ServiceMethod<$0.StepRequest, $0.StepReply>(
-        'SayHello',
-        sayHello_Pre,
+        'CountStep',
+        countStep_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $0.StepRequest.fromBuffer(value),
         ($0.StepReply value) => value.writeToBuffer()));
   }
 
-  $async.Future<$0.StepReply> sayHello_Pre(
+  $async.Future<$0.StepReply> countStep_Pre(
       $grpc.ServiceCall call, $async.Future<$0.StepRequest> request) async {
-    return sayHello(call, await request);
+    return countStep(call, await request);
   }
 
-  $async.Future<$0.StepReply> sayHello(
+  $async.Future<$0.StepReply> countStep(
       $grpc.ServiceCall call, $0.StepRequest request);
 }
